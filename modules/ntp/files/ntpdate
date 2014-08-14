@@ -1,0 +1,7 @@
+#!/bin/bash
+
+/usr/sbin/ntpdate -s 0.fedora.pool.ntp.org
+/usr/sbin/ntpdate -s 1.fedora.pool.ntp.org
+/usr/sbin/ntpdate -s 2.fedora.pool.ntp.org
+/sbin/hwclock -w
+

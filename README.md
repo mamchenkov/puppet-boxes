@@ -15,6 +15,7 @@ Installation
 ```
 $ sudo yum install git puppet
 $ git clone git@github.com:mamchenkov/puppet-boxes.git
+$ # or git clone https://github.com/mamchenkov/puppet-boxes.git
 $ cd puppet-boxes
 $ sudo puppet apply manifests/desktop.pp --modulepath=modules/
 ```

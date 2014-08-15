@@ -9,16 +9,45 @@ This is highly experimental and unstable, since I'm still learning Puppet.
 It works for me on Fedora 20.  If doesn't for you - send me a pull request.
 Or at least a bug report.  I'm interested in figuring out 'why'.
 
-Installation
-------------
+Usage
+-----
+
+### Install prerequisites
 
 ```
 $ sudo yum install git puppet
-$ git clone git@github.com:mamchenkov/puppet-boxes.git
-$ # or git clone https://github.com/mamchenkov/puppet-boxes.git
-$ cd puppet-boxes
-$ sudo puppet apply manifests/desktop.pp --modulepath=modules/
 ```
+
+### Clone the repository
+
+```
+$ git clone git@github.com:mamchenkov/puppet-boxes.git
+```
+
+or using HTTPS:
+
+```
+$ git clone https://github.com/mamchenkov/puppet-boxes.git
+```
+
+### Apply puppet configuration
+
+You can either apply the minimal configuration (good for headless servers):
+
+```
+$ cd puppet-boxes
+$ sudo puppet apply --modulepath=modules/ manifests/minimal.pp
+```
+
+Or a full featured configuration for machines with GUI setup:
+
+```
+$ cd puppet-boxes
+$ sudo puppet apply --modulepath=modules/ manifests/desktop.pp
+```
+
+There is no need to apply minimal before deskop, as desktop includes the minimal.
+
 
 Updates
 -------
@@ -26,15 +55,15 @@ Updates
 ```
 $ cd puppet-boxes
 $ git pull origin master
-$ sudo puppet apply manifests/desktop.pp --modulepath=modules/
+$ sudo puppet apply --modulepath=modules/ manifests/desktop.pp
 ```
 
 TODO
 ----
 - [x] Proof of concept
 - [x] Marginally useful 
-- [ ] Separate text-based and GUI-based setups
+- [x] Separate text-based and GUI-based setups
   - [x] Separate roles and profiles
-  - [ ] Create a separate manifest for text-only boxes
+  - [x] Create a separate manifest for text-only boxes
 - [ ] Add user manifests to manifests/people/username.pp
 

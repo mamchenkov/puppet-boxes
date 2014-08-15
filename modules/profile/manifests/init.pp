@@ -14,6 +14,10 @@ class profile::base {
 		ensure => 'latest'
 	}
 
+	class { 'selinux':
+		mode => 'disabled'
+	}
+
 }
 
 # Only Linux boxes used with GUI should have this

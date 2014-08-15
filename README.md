@@ -9,6 +9,26 @@ This is highly experimental and unstable, since I'm still learning Puppet.
 It works for me on Fedora 20.  If doesn't for you - send me a pull request.
 Or at least a bug report.  I'm interested in figuring out 'why'.
 
+Features
+--------
+
+There are currently two manifests that can be applied: minimal and desktop.
+
+### Minimal
+
+* Time synchroniztion (using ntpdate and hwclock, via hourly cron job);
+* Packages enhancing command line work: git, tig, screen, mc, vim-enhanced;
+* Disable SELinux
+
+### Desktop
+
+* Skype (via extra YUM repository)
+* Web browser configuration
+  * Google Chrome (via extra YUM repository)
+  * Adobe Flash (via extra YUM repository)
+  * Firefox browser
+* Terminator - muliple GNOME terminals in one window
+
 Usage
 -----
 

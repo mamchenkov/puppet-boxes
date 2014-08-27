@@ -1,11 +1,18 @@
 class ntp {
+
+	# Dtermine util-linux package based on the operatingsystem fact
+	$util_linux = $operatingsystem ? {
+		Fedora => 'util-linux',
+		CentOS => 'util-linux-ng',
+	}
+
 	# For synchronizing time over the network
 	package { 'ntpdate':
 		ensure => 'latest'
 	}
 
 	# For hwclock time writing
-	package { 'util-linux':
+	package { "$util_linux":
 		ensure => 'latest'
 	}
 

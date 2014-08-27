@@ -33,3 +33,8 @@ class profile::desktop {
 		ensure => 'latest'
 	}
 }
+
+# Web server
+class profile::webserver {
+	include apache
+}

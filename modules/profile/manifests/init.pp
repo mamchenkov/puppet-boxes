@@ -37,4 +37,5 @@ class profile::desktop {
 # Web server
 class profile::webserver {
 	include apache
+	include php
 }

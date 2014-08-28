@@ -18,6 +18,16 @@ class profile::base {
 		mode => 'disabled'
 	}
 
+	# Replace Postfix with Exim
+	service { "postfix":
+		ensure => "stopped",
+		enable => "false"
+	}
+	package { "postfix": 
+		ensure => "purged"
+	}
+	class { 'exim': }
+
 }
 
 # Only Linux boxes used with GUI should have this

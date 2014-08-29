@@ -5,16 +5,17 @@ class skype {
 		ensure => 'absent'
 	}
 
+	$dependencies = [ 'qt', 'qtwebkit' ]
+	package { $dependencies :
+		ensure => 'installed'
+	}
+
 	# Install Skype directly from the skype.com website
 	package { 'skype':
 		ensure => 'installed',
 		provider => 'rpm',
-		source => 'http://download.skype.com/linux/skype-4.3.0.37-fedora.i586.rpm'
-	}
-
-	$dependencies = [ 'qt', 'qtwebkit' ]
-	package { $dependencies :
-		ensure => 'installed'
+		source => 'http://download.skype.com/linux/skype-4.3.0.37-fedora.i586.rpm',
+		require => Package[$dependencies]
 	}
 
 }

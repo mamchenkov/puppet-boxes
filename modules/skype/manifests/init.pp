@@ -1,18 +1,15 @@
 class skype {
-	# Skype YUM repository
+	# Skype YUM repository (legacy)
 	file { 'skype.repo':
 		path => '/etc/yum.repos.d/skype.repo',
-		ensure => file,
-		source => 'puppet:///modules/skype/skype.repo',
-		owner => 'root',
-		group => 'root',
-		mode => 644
+		ensure => 'absent'
 	}
 
-	# Install latest version of Skype once we have the repo configured
+	# Install Skype directly from the skype.com website
 	package { 'skype':
-		ensure => 'latest',
-		require => File['skype.repo']
+		ensure => 'installed',
+		provider => 'rpm',
+		source => 'http://download.skype.com/linux/skype-4.3.0.37-fedora.i586.rpm'
 	}
 
 }

@@ -34,4 +34,14 @@ class nginx {
 		mode => 644
 	}
 
+	file { 'www.conf':
+		notify => Service['php-fpm'],
+		path => '/etc/php-fpm.d/www.conf',
+		ensure => file,
+		source => 'puppet:///modules/nginx/www.conf',
+		owner => 'root',
+		group => 'root',
+		mode => 644
+	}
+
 }

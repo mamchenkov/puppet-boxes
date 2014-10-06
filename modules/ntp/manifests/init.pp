@@ -3,6 +3,7 @@ class ntp {
 	# Dtermine util-linux package based on the operatingsystem fact
 	$util_linux = $operatingsystem ? {
 		Fedora => 'util-linux',
+		Amazon => 'util-linux',
 		CentOS => 'util-linux-ng',
 	}
 

@@ -14,8 +14,10 @@ class profile::base {
 		ensure => 'latest'
 	}
 
-	class { 'selinux':
-		mode => 'disabled'
+	# Remove SELinux
+	$selinux = ['selinux-policy', 'selinux-policy-targeted']
+	package { $selinux:
+		ensure => 'purged'
 	}
 
 	# Replace Postfix with Exim

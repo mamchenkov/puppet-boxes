@@ -1,15 +1,8 @@
 class nginx {
 
-	$remove_packages = $operatingsystem ? {
-		Fedora => ['httpd-tools', 'httpd'],
-		CentOS => ['httpd-tools', 'httpd'],
-		Amazon => ['httpd-tools', 'httpd', 'php-fpm', 'php-cli', 'php-xml', 'php-gd', 'php-mbstring', 'php-mcrypt'],
-	}
-
 	$install_packages = $operatingsystem ? {
-		Fedora => ['nginx', 'php-fpm', 'php-cli', 'php-xml', 'php-gd', 'php-mbstring', 'php-mcrypt'],
-		CentOS => ['nginx', 'php-fpm', 'php-cli', 'php-xml', 'php-gd', 'php-mbstring', 'php-mcrypt'],
 		Amazon => ['nginx', 'php55-fpm', 'php55-cli', 'php55-xml', 'php55-gd', 'php55-mbstring', 'php55-mcrypt'],
+		default => ['nginx', 'php-fpm', 'php-cli', 'php-xml', 'php-gd', 'php-mbstring', 'php-mcrypt'],
 	}
 
 	$fpm_service = $operatingsystem ? {
@@ -40,9 +33,10 @@ class nginx {
 		enable => "true"
 	}
 
-	package { $remove_packages:
+	package { ['httpd-tools', 'httpd']:
 		ensure => 'purged'
 	}
+
 	package { $install_packages:
 		ensure => 'latest'
 	}

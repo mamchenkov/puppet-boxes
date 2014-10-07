@@ -71,4 +71,13 @@ class nginx {
 		mode => 644
 	}
 
+	file { 'composer':
+		path => '/usr/bin/composer',
+		ensure => file,
+		source => 'puppet:///modules/nginx/composer',
+		owner => 'root',
+		group => 'root',
+		mode => 755
+	}
+
 }

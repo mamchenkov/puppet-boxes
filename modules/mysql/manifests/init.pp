@@ -8,8 +8,7 @@ class mysql {
 
 	$mysql_service = $operatingsystem ? {
 		Fedora => 'mariadb',
-		CentOS => 'mysqld',
-		Amazon => 'mysqld-5.5',
+		default => 'mysqld',
 	}
 
 

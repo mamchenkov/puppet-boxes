@@ -28,6 +28,25 @@ There are currently two manifests that can be applied: minimal and desktop.
   * Adobe Flash (via extra YUM repository)
   * Firefox browser
 * Terminator - muliple GNOME terminals in one window
+* 
+
+### Web Server
+
+* Nginx + php-fpm
+
+### Database Server
+
+* MySQL/MariaDB
+
+### Development Server
+
+* Whatever Web Server has
+* Whatever DB Server has
+
+### Development Desktop
+
+* Whatever Desktop has
+* Whatever Development server has
 
 Usage
 -----
@@ -56,7 +75,7 @@ You can either apply the minimal configuration (good for headless servers):
 
 ```
 $ cd puppet-boxes
-$ sudo puppet apply --modulepath=modules/ manifests/minimal.pp
+$ sudo puppet apply --modulepath=modules/ manifests/base.pp
 ```
 
 Or a full featured configuration for machines with GUI setup:

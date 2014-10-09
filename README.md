@@ -14,7 +14,7 @@ Features
 
 There are currently two manifests that can be applied: minimal and desktop.
 
-### Minimal
+### Base
 
 * Time synchroniztion (using ntpdate and hwclock, via hourly cron job);
 * Packages enhancing command line work: git, tig, screen, mc, vim-enhanced;

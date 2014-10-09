@@ -1,3 +1,3 @@
 node default {
-	include role::webserver
+	include role::server-web
 }

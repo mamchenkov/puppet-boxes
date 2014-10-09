@@ -31,27 +31,3 @@ class profile::base {
 	class { 'exim': }
 
 }
-
-# Only Linux boxes used with GUI should have this
-class profile::desktop {
-	include skype
-	include web-browser
-
-	$enhancers = [
-		'terminator'
-	]
-
-	package { $enhancers:
-		ensure => 'latest'
-	}
-}
-
-# Web server
-class profile::webserver {
-	include nginx
-}
-
-# DB server
-class profile::dbserver {
-	include mysql
-}

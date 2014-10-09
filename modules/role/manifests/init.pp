@@ -12,3 +12,7 @@ class role::desktop inherits role{
 class role::webserver inherits role{
 	include profile::webserver
 }
+
+class role::dbserver inherits role{
+	include profile::dbserver
+}

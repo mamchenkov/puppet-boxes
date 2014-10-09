@@ -48,7 +48,10 @@ class profile::desktop {
 
 # Web server
 class profile::webserver {
-	#include apache
-	#include php
 	include nginx
+}
+
+# DB server
+class profile::dbserver {
+	include mysql
 }

@@ -1,8 +1,8 @@
 class nginx {
 
 	$install_packages = $operatingsystem ? {
-		Amazon => ['nginx', 'php55-fpm', 'php55-cli', 'php55-xml', 'php55-gd', 'php55-mbstring', 'php55-mcrypt'],
-		default => ['nginx', 'php-fpm', 'php-cli', 'php-xml', 'php-gd', 'php-mbstring', 'php-mcrypt'],
+		Amazon => ['nginx', 'php55-fpm', 'php55-cli', 'php55-mysqlnd', 'php55-xml', 'php55-gd', 'php55-mbstring', 'php55-mcrypt'],
+		default => ['nginx', 'php-fpm', 'php-cli', 'php-mysqlnd', 'php-xml', 'php-gd', 'php-mbstring', 'php-mcrypt'],
 	}
 
 	$fpm_service = $operatingsystem ? {

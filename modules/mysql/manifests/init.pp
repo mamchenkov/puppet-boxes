@@ -21,4 +21,14 @@ class mysql {
 		ensure => 'latest'
 	}
 
+	file { 'my.cnf':
+		notify => Service[$mysql_service],
+		path => '/etc/my.cnf',
+		ensure => file,
+		source => 'puppet:///modules/mysql/my.cnf',
+		owner => 'root',
+		group => 'root',
+		mode => 644
+	}
+
 }

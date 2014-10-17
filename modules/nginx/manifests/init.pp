@@ -1,8 +1,33 @@
 class nginx {
 
+	# These are the same packages, sorted alphabetically
 	$install_packages = $operatingsystem ? {
-		Amazon => ['nginx', 'php55-fpm', 'mysql55', 'php55-cli', 'php55-pdo', 'php55-mysqlnd', 'php55-xml', 'php55-gd', 'php55-mbstring', 'php55-mcrypt'],
-		default => ['nginx', 'php-fpm', 'mysql', 'php-cli', 'php-pdo', 'php-mysqlnd', 'php-xml', 'php-gd', 'php-mbstring', 'php-mcrypt'],
+		Amazon => [
+			'mysql55', 
+			'nginx', 
+			'php55-cli', 
+			'php55-fpm', 
+			'php55-gd', 
+			'php55-mbstring', 
+			'php55-mcrypt',
+			'php55-mysqlnd', 
+			'php55-pdo', 
+			'php55-soap', 
+			'php55-xml', 
+		],
+		default => [
+			'mysql', 
+			'nginx', 
+			'php-cli', 
+			'php-fpm', 
+			'php-gd', 
+			'php-mbstring', 
+			'php-mcrypt',
+			'php-mysqlnd', 
+			'php-pdo', 
+			'php-soap', 
+			'php-xml', 
+		],
 	}
 
 	$fpm_service = $operatingsystem ? {

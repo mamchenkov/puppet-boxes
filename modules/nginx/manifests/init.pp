@@ -66,6 +66,14 @@ class nginx {
 		ensure => 'latest'
 	}
 
+	file { 'sessions':
+		path => '/var/lib/php/session',
+		ensure => directory,
+		owner => 'nginx',
+		group => 'nginx',
+		mode => 770
+	}
+
 	file { 'nginx.conf':
 		notify => Service['nginx'],
 		path => '/etc/nginx/nginx.conf',

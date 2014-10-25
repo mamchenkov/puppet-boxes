@@ -1,7 +1,7 @@
 #!/bin/bash
 
-/usr/sbin/ntpdate -s 0.fedora.pool.ntp.org
-/usr/sbin/ntpdate -s 1.fedora.pool.ntp.org
-/usr/sbin/ntpdate -s 2.fedora.pool.ntp.org
-/sbin/hwclock -w
+# Update time and log to syslog
+/usr/sbin/ntpdate -s 0.fedora.pool.ntp.org 1.fedora.pool.ntp.org 2.fedora.pool.ntp.org
+# Write hardware clock, if available (virtual hosts might not have one)
+/sbin/hwclock -w 2>/dev/null
 

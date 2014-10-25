@@ -19,15 +19,8 @@ class profile::base {
 	package { $selinux:
 		ensure => 'purged'
 	}
-
-	# Replace Postfix with Exim
-	service { "postfix":
-		ensure => "stopped",
-		enable => "false"
-	}
-	package { "postfix": 
-		ensure => "purged"
-	}
-	class { 'exim': }
+	
+	# Use Exim for MTA
+	include exim
 
 }

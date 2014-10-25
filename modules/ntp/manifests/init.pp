@@ -7,6 +7,12 @@ class ntp {
 		CentOS => 'util-linux-ng',
 	}
 
+	# Stop the service. We use scheduled cron instead
+	service { 'ntpd':
+		ensure => 'stopped',
+		enable => false
+	}
+
 	# For synchronizing time over the network
 	package { 'ntpdate':
 		ensure => 'latest'

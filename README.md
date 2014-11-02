@@ -28,7 +28,10 @@ There are currently two manifests that can be applied: minimal and desktop.
   * Adobe Flash (via extra YUM repository)
   * Firefox browser
 * Terminator - muliple GNOME terminals in one window
-* 
+
+### Gateway Server
+
+* Allow ipv4 forwarding in sysctl
 
 ### Web Server
 

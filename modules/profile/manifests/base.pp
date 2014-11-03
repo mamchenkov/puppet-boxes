@@ -2,6 +2,8 @@
 class profile::base {
 
 	include ntp
+	include hashbackup
+	include exim
 
 	$enhancers = [ 
 		'git', 'tig',
@@ -20,7 +22,4 @@ class profile::base {
 		ensure => 'purged'
 	}
 	
-	# Use Exim for MTA
-	include exim
-
 }

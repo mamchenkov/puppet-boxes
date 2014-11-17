@@ -21,5 +21,10 @@ class profile::base {
 	package { $selinux:
 		ensure => 'purged'
 	}
+
+	# Install swap file
+	class { 'swap_file':
+		swapfile => '/swapfile'
+	}
 	
 }

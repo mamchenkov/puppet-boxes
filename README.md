@@ -19,6 +19,7 @@ There are currently two manifests that can be applied: minimal and desktop.
 * Time synchroniztion (using ntpdate and hwclock, via hourly cron job);
 * Packages enhancing command line work: git, tig, screen, mc, vim-enhanced;
 * Disable SELinux
+* Add /swapfile twice the size of RAM
 
 ### Desktop
 

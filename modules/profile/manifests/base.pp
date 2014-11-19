@@ -29,7 +29,7 @@ class profile::base {
 
 	class { '::cosmetic::bash':
 		# Green user with blue directory
-		ps1_user => '[\[\033[01;32m\]\u\[\033[00m\]@\h\[\033[01;34m\] \W\[\033[00m\]]\$ ',
+		ps1 => '[\[\033[01;32m\]\u\[\033[00m\]@\h\[\033[01;34m\] \W\[\033[00m\]]\$ ',
 		# Red user with blue directory
 		ps1_root => '[\[\033[01;31m\]\u\[\033[00m\]@\h\[\033[01;34m\] \W\[\033[00m\]]\$ ',
 	}

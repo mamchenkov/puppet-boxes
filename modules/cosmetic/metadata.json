@@ -1,0 +1,33 @@
+{
+  "version": "0.1.1",
+  "source": "git://github.com/thias/puppet-cosmetic",
+  "summary": "Cosmetic changes module",
+  "dependencies": [
+
+  ],
+  "name": "thias-cosmetic",
+  "description": "Cosmetic configuration changes",
+  "project_page": "https://github.com/thias/puppet-cosmetic",
+  "checksums": {
+    "templates/release.systemd.erb": "3c43b1cecaceac8d437e4f3251e2a801",
+    "manifests/release.pp": "9f6aa4ee2e302aa6a4720dc2c155dbcf",
+    "templates/cosmetic.sh.erb": "68b90706b0bf504b9f95d385be729b86",
+    "ChangeLog": "f7cc5e14707a8f910f1e38a486f0b6ea",
+    "Modulefile": "63fb1dfe17e7f546a9ddd26ffcc91505",
+    "tests/release.pp": "10b2c86bf01180b4c4d9b4a38627c33b",
+    "LICENSE": "83e46d88c72d131428fd758472adc03a",
+    "tests/bash.pp": "28a097c9d62de7e24ef86b6358675c51",
+    "templates/release.init.erb": "7971c7b1d34e1cb9995ce9c5475fe3ac",
+    "manifests/bash.pp": "4fd64063cd7e07701531591f9b43cc44",
+    "manifests/vimrc.pp": "ce0a5333c870ca8c44c0c8cdeec7cd8d",
+    "README.md": "fdfbd4a496a4b2fb616560ac45bf808f",
+    "tests/vimrc.pp": "b6fd77e133b7f6c73625dba312089058",
+    "templates/release.erb": "d174e252ee1ef601884f2b06d94bd7ff",
+    "templates/vimrc.erb": "fc02fceeca2142658ecb612aff32f18f"
+  },
+  "author": "Matthias Saou",
+  "license": "Apache 2.0",
+  "types": [
+
+  ]
+}

@@ -9,7 +9,8 @@ class profile::base {
 		'git', 'tig',
 		'screen',
 		'mc',
-		'vim-enhanced'
+		'vim-enhanced',
+		'logwatch'
 	]
 
 	package { $enhancers:

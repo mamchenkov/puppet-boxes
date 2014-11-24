@@ -1,0 +1,19 @@
+###     automysqlbackup.conf   ###
+###     Configured by Puppet   ###
+###                            ###
+###   Manual changes to this   ###
+###  file will be overwritten  ###
+
+# String options
+<% @template_string_options.sort.map do |k, v| -%>
+
+<% if v.kind_of?(Array) -%>
+<% if !v.empty? -%>
+CONFIG_<%= k %>=( '<%= v.flatten.join("' '") %>' )
+<% end -%>
+<% else -%>
+CONFIG_<%= k %>='<%= v %>'
+
+<% end -%>
+<% end -%>
+

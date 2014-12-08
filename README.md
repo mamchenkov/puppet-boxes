@@ -34,6 +34,16 @@ There are currently two manifests that can be applied: minimal and desktop.
 
 * Allow ipv4 forwarding in sysctl
 
+### Nagios Server
+
+* Nagios with all plugins, including NRPE
+
+This is currently incomplete in terms of configuration
+
+### Nagios Server NRPE
+
+* NRPE agent with all Nagios plugins
+
 ### Web Server
 
 * Nginx + php-fpm

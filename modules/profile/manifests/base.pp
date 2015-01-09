@@ -14,7 +14,7 @@ class profile::base {
 	]
 
 	package { $enhancers:
-		ensure => 'latest'
+		ensure => 'present'
 	}
 
 	# Remove SELinux

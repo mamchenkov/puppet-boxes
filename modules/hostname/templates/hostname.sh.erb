@@ -1,0 +1,21 @@
+#!/bin/bash
+
+OLD_HOSTNAME=$(hostname)
+HOSTNAME=$(wget -q -O - <%= @hostname_lookup_url %>)
+
+# Empty hostname is no good
+if [ -z "$HOSTNAME" ]
+then
+	exit;
+fi
+
+# No change in hostname is necessary
+if [ "$HOSTNAME" == "$OLD_HOSTNAME" ]
+then
+	exit;
+fi
+
+# Set hostname
+perl -p -i -e "s/^HOSTNAME=.*$/HOSTNAME=$HOSTNAME/" /etc/sysconfig/network
+hostname $HOSTNAME
+

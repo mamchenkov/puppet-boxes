@@ -5,15 +5,13 @@
 # plain/text type.  The lookup can be done by the remote IP.
 class hostname ($hostname_lookup_url = 'http://core.qobo.qobocloud.com/hostname') {
 
-	$requried = $operatingsystem ? {
+	$required = $operatingsystem ? {
 		/(?i:RedHat|CentOS|Amazon)/ => ['bash', 'wget', 'perl', 'net-tools'],
 		/(?i:Fedora)/               => ['bash', 'wget', 'perl', 'hostname'],
 	}
 
 	case $operatingsystem {
 		/(?:RedHat|CentOS|Amazon|Fedora)/: {
-			notice("Operating system [$operatingsystem] is supported")
-
 			package { $required :
 				ensure => "present"
 			}

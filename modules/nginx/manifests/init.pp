@@ -3,7 +3,6 @@ class nginx {
 	# These are the same packages, sorted alphabetically
 	$install_packages = $operatingsystem ? {
 		Amazon => [
-			'mysql55', 
 			'nginx', 
 			'php55-cli', 
 			'php55-fpm', 
@@ -16,7 +15,6 @@ class nginx {
 			'php55-xml', 
 		],
 		Fedora => [
-			'mariadb', 
 			'nginx', 
 			'php-cli', 
 			'php-fpm', 
@@ -29,7 +27,6 @@ class nginx {
 			'php-xml', 
 		],
 		default => [
-			'mysql', 
 			'nginx', 
 			'php-cli', 
 			'php-fpm', 

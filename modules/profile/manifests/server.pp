@@ -4,7 +4,8 @@ class profile::server {
 	include hashbackup
 
 	$enhancers = [ 
-		'logwatch'
+		'logwatch',
+		'mutt',
 	]
 
 	package { $enhancers:

@@ -1,0 +1,51 @@
+#!/bin/bash
+
+#
+# Daily cron job for the HashBackup with sensible defaults.
+# More info: http://www.hashbackup.com/
+# 
+# Quick emergency help:
+# 
+# * List all backups      : <%= @hashbackup %> versions -c "<%= @backup_dir %>" -a
+# * Mount all backups     : <%= @hashbackup %> mount -c "<%= @backup_dir %>" /mnt -f
+# * List all files        : <%= @hashbackup %> ls -c "<%= @backup_dir %>" -l 
+# * Compare disk to backup: <%= @hashbackup %> compare -c "<%= @backup_dir %>" -X /some/path
+# * Restore files         : <%= @hashbackup %> get -c "<%= @backup_dir %>" /some/path 
+# 
+
+HASHBACKUP="<%= @hashbackup %>"
+BACKUP_DIR="<%= @backup_dir %>"
+CHECK_HB_UPDATES="<%= @check_hb_updates %>"
+VERBOSE=<%= @verbose %>
+DEDUP_MEMORY="<%= @dedup_memory %>"
+MAX_FILE_SIZE="<%= @max_file_size %>"
+RETAIN_POLICY="<%= @retain_policy %>"
+BACKUP_TARGETS="<%= @backup_targets %>"
+TAG="DailyBackup-$(date +'%F')"
+
+# Check for the newer version fo HashBackup
+if [ "$CHECK_HB_UPDATES" == "yes" ]
+then
+	echo "Checking for updates"
+	$HASHBACKUP upgrade --force
+	echo "--------------------"
+fi
+
+# Initialize the backup directory if it's not there
+if [ ! -d "$BACKUP_DIR" ]
+then
+	echo "Initializing backup directory"
+	$HASHBACKUP init -c "$BACKUP_DIR"
+	echo "-----------------------------"
+fi
+
+# Do the backup now
+echo "Backing up tag $TAG"
+$HASHBACKUP backup -c "$BACKUP_DIR" -X -v$VERBOSE -t "$TAG" -m "$MAX_FILE_SIZE" -D "$DEDUP_MEMORY" $BACKUP_TARGETS
+echo "-------------------------------------"
+
+# Aply retention policy
+echo "Applying retention policy"
+$HASHBACKUP retain -c "$BACKUP_DIR" $RETAIN_POLICY
+echo "-------------------------"
+

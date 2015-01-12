@@ -9,6 +9,7 @@ class profile::base {
 		'screen',
 		'mc',
 		'vim-enhanced',
+		'man',
 	]
 
 	package { $enhancers:

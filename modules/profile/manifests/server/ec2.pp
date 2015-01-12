@@ -1,7 +1,7 @@
 # Amazon EC2 base
-class profile::base::ec2 {
+class profile::server::ec2 {
 
-	include profile::base
+	include profile::server
 	include hostname
 
 }

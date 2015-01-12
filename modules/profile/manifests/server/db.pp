@@ -1,5 +1,7 @@
 # DB server
-class profile::server-db {
+class profile::server::db {
+
+	include profile::server
 	include mysql
 
 	class { 'automysqlbackup':

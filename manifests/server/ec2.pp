@@ -1,3 +1,3 @@
 node default {
-	include role::base::ec2
+	include role::server::ec2
 }

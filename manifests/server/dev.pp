@@ -1,3 +1,3 @@
 node default {
-	include role::server-dev
+	include role::server::dev
 }

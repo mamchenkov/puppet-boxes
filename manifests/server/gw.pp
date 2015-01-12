@@ -1,3 +1,3 @@
 node default {
-	include role::server-gw
+	include role::server::gw
 }

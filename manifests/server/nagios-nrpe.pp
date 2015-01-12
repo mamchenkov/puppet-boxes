@@ -1,3 +1,3 @@
 node default {
-	include role::server-nagios-nrpe
+	include role::server::nagios-nrpe
 }

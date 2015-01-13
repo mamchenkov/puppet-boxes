@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Run tests after any changes to the puppet manifests and modules
+
+for FILE in $(find | grep \\.pp) 
+do 
+	echo Validating "$FILE"
+	puppet parser validate "$FILE"
+done

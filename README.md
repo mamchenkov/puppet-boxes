@@ -1,27 +1,75 @@
 puppet-boxes
 ============
 
-Masterless puppet configuration for my desktop/laptop Fedora boxes.  This
+Masterless puppet configuration for my server and desktop boxes.  This
 is heavily based on the Roles and Profiles approach described by Craig
 Dunn in [this blog post](http://www.craigdunn.org/2012/05/239/).
 
 This is highly experimental and unstable, since I'm still learning Puppet.
-It works for me on Fedora 20.  If doesn't for you - send me a pull request.
-Or at least a bug report.  I'm interested in figuring out 'why'.
+It works for me on a variety of Red Hat based distributions - CentOS 6.5+, 
+Fedora 20+, and Amazon.  If doesn't work for you - send me a pull request.
+Or at least a bug report.  I'm interested in figuring out 'why'. I'd also
+appreciate any suggestions on how to improve this setup.
 
 Features
 --------
 
-There are currently two manifests that can be applied: minimal and desktop.
+### Shortcut script to install/apply
 
-### Base
+In the root folder of the project you'll find the ```apply``` script.  It's a
+simply shortcut that does the following:
+
+* Checks if you are root or not.  If you are not, sudo is prepended to all commands.
+* Makes sure puppet is installed.  This is handy for freshly installed boxes.
+* Tries to guess which manifest you want to run
+
+You can use the regular puppet command line like so:
+
+```
+$ puppet apply --modulepath=modules/ manifests/base.pp
+```
+
+Or you can use the ```apply``` shortcut with the full path to the manifest (to
+avoid any guessing):
+
+```
+$ ./apply manifests/base.pp
+```
+
+Or you can use the shortcut version:
+
+```
+$ ./apply base
+```
+
+The variety of manifests is available.  Keep reading for descriptions, or just 
+examine the ```manifests/``` folder.  Each manifest applies a role (roles can
+be found in ```modules/roles/manifests/```).  Each role applies one or more
+profiles (profiles can be found in ```modules/profiels/manifests/```).
+
+You can as easily create your own manifests, roles, and profiles.
+
+### Base Configuration
+
+```./apply base```
+
+This is the minimal base configuration that is applicable to all boxes.  It is
+included with all other configurations automatically, so you don't need to apply
+it separately.  It includes the following:
 
 * Time synchroniztion (using ntpdate and hwclock, via hourly cron job);
 * Packages enhancing command line work: git, tig, screen, mc, vim-enhanced;
 * Disable SELinux
 * Add /swapfile twice the size of RAM
+* Better bash prompt with a bit of color
+* Kernel optimization via sysctl tweaking
 
-### Desktop
+### Desktop Configuration
+
+```./apply desktop```
+
+This is a generic GUI desktop configuration.  It includes the base configuration
+and adds a few enhancements like:
 
 * Skype (via extra YUM repository)
 * Web browser configuration
@@ -30,37 +78,83 @@ There are currently two manifests that can be applied: minimal and desktop.
   * Firefox browser
 * Terminator - muliple GNOME terminals in one window
 
-### Gateway Server
+All other desktop* configurations include this one automatically.
 
-* Allow ipv4 forwarding in sysctl
+### Development Desktop Configuration
 
-### Nagios Server
+```./apply desktop/dev```
 
-* Nagios with all plugins, including NRPE
+This is a desktop configuration with tools for web development.  It includes
+everything that a base desktop configuration has, with additions of web and
+database servers.  The generic server configuration is excluded to avoid
+local backups, logwatch and such.
 
-This is currently incomplete in terms of configuration
+* Whatever Desktop has
+* Whatever Development server has
+* Except for what generic server has
 
-### Nagios Server NRPE
+### Server Configuration
 
-* NRPE agent with all Nagios plugins
+```./apply server```
 
-### Web Server
+This is the minimal server configuration.  It includes the base configuration and
+adds a few enhancements like:
 
-* Nginx + php-fpm
+* HashBackup configuration for daily local backups to /var/backup/files
+* logwatch for server log monitoring
+* mutt for easier access to local server mailboxes
 
-### Database Server
+All other server* configurations include this one automaticallyj so there is no 
+need to run this separately.
 
-* MySQL/MariaDB
+### Web Server Configuration
 
-### Development Server
+```./apply server/web```
+
+* Base configuration
+* Server configuration
+* Nginx with PHP (php-fpm)
+* MySQL client
+
+### Database Server Configuration
+
+```./apply server/db```
+
+* Base configuration
+* Server configuration
+* MySQL/MariaDB server
+* MySQL/MariaDB client
+
+### Development Server Configuration
+
+```./apply server/dev```
 
 * Whatever Web Server has
 * Whatever DB Server has
 
-### Development Desktop
+### Gateway Server Configuration
 
-* Whatever Desktop has
-* Whatever Development server has
+```./apply server/gw```
+
+* Base configuration
+* Server configuration
+* Allow ipv4 forwarding in sysctl
+
+### Nagios Server Configuration
+
+* Base configuration
+* Server configuration
+* Nagios server with all plugins
+* NRPE (Nagios Remote Plugin Executor)
+
+This is currently incomplete in terms of configuration
+
+### Nagios NRPE Client Configuration
+
+* Base configuration
+* Server configuration
+* NRPE agent (Nagios Remote Plugin Executor)
+* All Nagios plugins
 
 Usage
 -----
@@ -110,13 +204,4 @@ $ cd puppet-boxes
 $ git pull origin master
 $ sudo puppet apply --modulepath=modules/ manifests/desktop.pp
 ```
-
-TODO
-----
-- [x] Proof of concept
-- [x] Marginally useful 
-- [x] Separate text-based and GUI-based setups
-  - [x] Separate roles and profiles
-  - [x] Create a separate manifest for text-only boxes
-- [ ] Add user manifests to manifests/people/username.pp
 

@@ -51,7 +51,7 @@ You can as easily create your own manifests, roles, and profiles.
 
 ### Base Configuration
 
-Apply: ```./apply base```
+```./apply base```
 
 This is the minimal base configuration that is applicable to all boxes.  It is
 included with all other configurations automatically, so you don't need to apply
@@ -66,7 +66,7 @@ it separately.  It includes the following:
 
 ### Desktop Configuration
 
-Apply: ```./apply desktop```
+```./apply desktop```
 
 This is a generic GUI desktop configuration.  It includes the base configuration
 and adds a few enhancements like:
@@ -82,7 +82,7 @@ All other desktop* configurations include this one automatically.
 
 ### Development Desktop Configuration
 
-Apply: ```./apply desktop/dev```
+```./apply desktop/dev```
 
 This is a desktop configuration with tools for web development.  It includes
 everything that a base desktop configuration has, with additions of web and
@@ -95,7 +95,7 @@ local backups, logwatch and such.
 
 ### Server Configuration
 
-Apply: ```./apply server```
+```./apply server```
 
 This is the minimal server configuration.  It includes the base configuration and
 adds a few enhancements like:
@@ -109,7 +109,7 @@ need to run this separately.
 
 ### Web Server Configuration
 
-Apply: ```./apply server/web```
+```./apply server/web```
 
 * Base configuration
 * Server configuration
@@ -118,7 +118,7 @@ Apply: ```./apply server/web```
 
 ### Database Server Configuration
 
-Apply: ```./apply server/db```
+```./apply server/db```
 
 * Base configuration
 * Server configuration
@@ -127,14 +127,14 @@ Apply: ```./apply server/db```
 
 ### Development Server Configuration
 
-Apply: ```./apply server/dev```
+```./apply server/dev```
 
 * Whatever Web Server has
 * Whatever DB Server has
 
 ### Gateway Server Configuration
 
-Apply: ```./apply server/gw```
+```./apply server/gw```
 
 * Base configuration
 * Server configuration

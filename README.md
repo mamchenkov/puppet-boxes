@@ -14,6 +14,19 @@ appreciate any suggestions on how to improve this setup.
 Features
 --------
 
+### Test Script
+
+In the root folder of the project you'll find the ```test``` script.  It's a
+useful quick way to check the syntax of all your puppet files after any
+modifications.  Simply run it without any parameters:
+
+```
+$ ./test
+```
+
+It's print the name of each file that is checked, together with any warnings
+found on the way.  The execution will stop if any syntax errors are found.
+
 ### Shortcut script to install/apply
 
 In the root folder of the project you'll find the ```apply``` script.  It's a

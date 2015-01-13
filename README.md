@@ -16,7 +16,7 @@ Features
 
 ### Shortcut script to install/apply
 
-In the root folder of the project you'll find the ```aply``` script.  It's a
+In the root folder of the project you'll find the ```apply``` script.  It's a
 simply shortcut that does the following:
 
 * Checks if you are root or not.  If you are not, sudo is prepended to all commands.

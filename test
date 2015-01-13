@@ -14,3 +14,5 @@ do
 	echo Validating "$FILE"
 	$PUPPET parser validate "$FILE"
 done
+
+echo "All OK."

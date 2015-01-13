@@ -183,13 +183,13 @@ $ sudo yum install git puppet
 ### Clone the repository
 
 ```
-$ git clone git@github.com:mamchenkov/puppet-boxes.git
+$ git clone git@github.com:QoboLtd/puppet-boxes.git
 ```
 
 or using HTTPS:
 
 ```
-$ git clone https://github.com/mamchenkov/puppet-boxes.git
+$ git clone https://github.com/QoboLtd/puppet-boxes.git
 ```
 
 ### Apply puppet configuration

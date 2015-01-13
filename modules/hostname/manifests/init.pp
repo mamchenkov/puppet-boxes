@@ -11,7 +11,7 @@ class hostname ($hostname_lookup_url = 'http://core.qobo.qobocloud.com/hostname'
 	}
 
 	case $operatingsystem {
-		/(?:RedHat|CentOS|Amazon|Fedora)/: {
+		/(?i:RedHat|CentOS|Amazon|Fedora)/: {
 			package { $required :
 				ensure => "present"
 			}

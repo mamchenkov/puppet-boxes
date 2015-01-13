@@ -1,9 +1,12 @@
+# MySQL server and client
 class mysql {
 
+	include mysql::client
+
 	$install_packages = $operatingsystem ? {
-		Amazon => ['mysql55', 'mysql55-server'],
-		Fedora => ['mariadb', 'mariadb-server'],
-		default => ['mysql', 'mysql-server'],
+		Amazon => ['mysql55-server'],
+		Fedora => ['mariadb-server'],
+		default => ['mysql-server'],
 	}
 
 	$mysql_service = $operatingsystem ? {

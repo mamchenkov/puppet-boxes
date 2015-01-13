@@ -2,7 +2,6 @@
 class profile::base {
 
 	include ntp
-	include hashbackup
 	include exim
 
 	$enhancers = [ 
@@ -10,7 +9,6 @@ class profile::base {
 		'screen',
 		'mc',
 		'vim-enhanced',
-		'logwatch'
 	]
 
 	package { $enhancers:

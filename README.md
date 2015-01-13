@@ -49,7 +49,7 @@ profiles (profiles can be found in ```modules/profiels/manifests/```).
 
 You can as easily create your own manifests, roles, and profiles.
 
-### Base
+### Base Configuration
 
 Apply: ```./apply base```
 
@@ -64,7 +64,7 @@ it separately.  It includes the following:
 * Better bash prompt with a bit of color
 * Kernel optimization via sysctl tweaking
 
-### Desktop
+### Desktop Configuration
 
 Apply: ```./apply desktop```
 
@@ -80,7 +80,7 @@ and adds a few enhancements like:
 
 All other desktop* configurations include this one automatically.
 
-### Development Desktop
+### Development Desktop Configuration
 
 Apply: ```./apply desktop/dev```
 
@@ -93,7 +93,7 @@ local backups, logwatch and such.
 * Whatever Development server has
 * Except for what generic server has
 
-### Server
+### Server Configuration
 
 Apply: ```./apply server```
 
@@ -107,7 +107,7 @@ adds a few enhancements like:
 All other server* configurations include this one automaticallyj so there is no 
 need to run this separately.
 
-### Web Server
+### Web Server Configuration
 
 Apply: ```./apply server/web```
 
@@ -116,7 +116,7 @@ Apply: ```./apply server/web```
 * Nginx with PHP (php-fpm)
 * MySQL client
 
-### Database Server
+### Database Server Configuration
 
 Apply: ```./apply server/db```
 
@@ -125,14 +125,14 @@ Apply: ```./apply server/db```
 * MySQL/MariaDB server
 * MySQL/MariaDB client
 
-### Development Server
+### Development Server Configuration
 
 Apply: ```./apply server/dev```
 
 * Whatever Web Server has
 * Whatever DB Server has
 
-### Gateway Server
+### Gateway Server Configuration
 
 Apply: ```./apply server/gw```
 
@@ -140,7 +140,7 @@ Apply: ```./apply server/gw```
 * Server configuration
 * Allow ipv4 forwarding in sysctl
 
-### Nagios Server
+### Nagios Server Configuration
 
 * Base configuration
 * Server configuration
@@ -149,7 +149,7 @@ Apply: ```./apply server/gw```
 
 This is currently incomplete in terms of configuration
 
-### Nagios NRPE client
+### Nagios NRPE Client Configuration
 
 * Base configuration
 * Server configuration

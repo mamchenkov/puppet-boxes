@@ -2,8 +2,15 @@
 
 # Run tests after any changes to the puppet manifests and modules
 
+PUPPET=$(which puppet 2>/dev/null)
+if [ -z "$PUPPET" ]
+then
+	echo "Puppet not installed. Can't continue."
+	exit 1
+fi
+
 for FILE in $(find | grep \\.pp) 
 do 
 	echo Validating "$FILE"
-	puppet parser validate "$FILE"
+	$PUPPET parser validate "$FILE"
 done

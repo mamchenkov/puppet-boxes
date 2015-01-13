@@ -4,7 +4,7 @@ node default {
 
 	mailalias { 'root':
 		ensure => 'present',
-		recipient => 'root@qobocloud.com',
+		recipient => 'leonid@mamchenkov.net',
 		target => '/etc/aliases',
 	}
 }

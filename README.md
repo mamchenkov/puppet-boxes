@@ -1,7 +1,7 @@
 puppet-boxes
 ============
 
-[![Build Status](https://travis-ci.org/QoboLtd/puppet-boxes.svg?branch=master)](https://travis-ci.org/QoboLtd/puppet-boxes)
+[![Build Status](https://travis-ci.org/mamchenkov/puppet-boxes.svg?branch=master)](https://travis-ci.org/mamchenkov/puppet-boxes)
 
 Masterless puppet configuration for my server and desktop boxes.  This
 is heavily based on the Roles and Profiles approach described by Craig

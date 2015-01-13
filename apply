@@ -1,0 +1,62 @@
+#!/bin/bash
+
+# This is a shortcut for:
+# 
+#   [sudo] puppet apply --modulepath=modules/ manifests/something.pp
+#   
+# If the user is not root, we'll use sudo.  If the provided manifest
+# doesn't exist, we'll try to guess what the user meant by prepending
+# manifests/ folder and appending .pp 
+# 
+# If puppet is not installed, we'll also try to install it - handy 
+# for new boxes.
+
+# Use sudo for non-root users
+if [ $EUID -eq 0 ]
+then
+	SUDO=""
+else
+	echo "Running via sudo, as you are non-root"
+	SUDO=$(which sudo)
+fi
+
+# Make sure we have puppet
+PUPPET=$(which puppet 2>/dev/null)
+if [ -z "$PUPPET" ]
+then
+	echo "Installing puppet"
+	$SUDO yum install -y puppet
+	PUPPET=$(which puppet 2>/dev/null)
+	if [ -z "$PUPPET" ]
+	then
+		echo "Failed to install puppet. Can't continue."
+		exit 1
+	fi
+fi
+
+# Make sure we have manifest ...
+MANIFEST=$1
+if [ -z "$MANIFEST" ]
+then
+	echo "Missing manifest parameter"
+	echo "Usage: $0 manifests/some/manifest.pp"
+	exit 1
+fi
+
+# ... if we don't - guess.
+if [ ! -f "$MANIFEST" ]
+then
+	echo "Manifest $MANIFEST does not exist.  Guessing ..."
+	MANIFEST=manifests/$MANIFEST.pp
+	echo "Thinking $MANIFEST"
+	if [ ! -f "$MANIFEST" ]
+	then
+		echo "Guessed manifest does not exist either. Can't continue."
+		exit 1
+	fi
+fi
+
+# Apply the manifest
+echo "Applying manifest $MANIFEST"
+$SUDO $PUPPET apply --modulepath=modules/ $MANIFEST
+

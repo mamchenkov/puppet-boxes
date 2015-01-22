@@ -46,6 +46,11 @@ echo "-------------------------------------"
 
 # Aply retention policy
 echo "Applying retention policy"
-$HASHBACKUP retain -c "$BACKUP_DIR" $RETAIN_POLICY
+if [ "$RETAIN_POLICY" == "-t all" ]
+then
+	echo "Retention policy is '$RETAIN_POLICY'. Skipping."
+else
+	$HASHBACKUP retain -c "$BACKUP_DIR" $RETAIN_POLICY
+fi
 echo "-------------------------"
 

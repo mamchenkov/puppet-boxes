@@ -88,7 +88,17 @@ class nginx {
 		notify => Service['nginx'],
 		path => '/etc/nginx/nginx.conf',
 		ensure => file,
-		source => 'puppet:///modules/nginx/nginx.conf',
+		source => 'puppet:///modules/nginx/nginx/nginx.conf',
+		owner => 'root',
+		group => 'root',
+		mode => 644
+	}
+
+	file { 'fastcgi.conf':
+		notify => Service['nginx'],
+		path => '/etc/nginx/fastcgi.conf',
+		ensure => file,
+		source => 'puppet:///modules/nginx/nginx/fastcgi.conf',
 		owner => 'root',
 		group => 'root',
 		mode => 644
@@ -98,7 +108,7 @@ class nginx {
 		notify => Service['nginx'],
 		path => '/etc/nginx/restrictions.conf',
 		ensure => file,
-		source => 'puppet:///modules/nginx/restrictions.conf',
+		source => 'puppet:///modules/nginx/nginx/restrictions.conf',
 		owner => 'root',
 		group => 'root',
 		mode => 644
@@ -108,7 +118,7 @@ class nginx {
 		notify => Service[$fpm_service],
 		path => $fpm_file_path,
 		ensure => file,
-		source => 'puppet:///modules/nginx/www.conf',
+		source => 'puppet:///modules/nginx/php-fpm/www.conf',
 		owner => 'root',
 		group => 'root',
 		mode => 644

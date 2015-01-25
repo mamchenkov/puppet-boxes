@@ -6,6 +6,8 @@ class profile::base {
 
 	$enhancers = [ 
 		'git', 'tig',
+		'ack',
+		'htop',
 		'screen',
 		'mc',
 		'vim-enhanced',

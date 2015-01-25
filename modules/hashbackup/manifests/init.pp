@@ -22,7 +22,8 @@ class hashbackup (
 		source => $binary,
 		owner => 'root',
 		group => 'root',
-		mode => 755
+		mode => 755,
+		backup => false
 	}
 
 	case $operatingsystem {
@@ -33,7 +34,8 @@ class hashbackup (
 					ensure => "file",
 					mode => 755,
 					owner => "root",
-					group => "root"
+					group => "root",
+					backup => false
 				}
 			}
 	}
